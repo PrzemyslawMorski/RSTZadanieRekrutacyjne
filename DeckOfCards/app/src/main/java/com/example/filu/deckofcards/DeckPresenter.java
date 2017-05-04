@@ -1,8 +1,5 @@
 package com.example.filu.deckofcards;
 
-import android.graphics.drawable.Drawable;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,17 +13,21 @@ public class DeckPresenter implements IDeckPresenter{
     DeckPresenter(IDeckView view, IDeckRepository repo) {
         this.view = view;
         this.repo = repo;
+        repo.setPresenter(this);
     }
 
 
 
     @Override
-    public void loadCards() {
-        List<Card> cards = repo.getFiveCards(1);
-        List<Drawable> imgs = new ArrayList<>();
-        for(Card card : cards) {
-            imgs.add(card.image);
-        }
-        view.showCards(imgs);
+    public void loadCards(final int numDecks) {
+        view.showWaitingScreen();
+        repo.startGettingCards(numDecks);
     }
+
+    public void receiveCards(List<Card> cards) {
+        view.showCards(null);
+        //send the images to view
+        //send the appropriate message to display to view
+    }
+
 }

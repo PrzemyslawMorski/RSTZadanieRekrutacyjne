@@ -11,4 +11,6 @@ import java.util.List;
 public interface IDeckView {
 
     void showCards(List<Drawable> cards);
+
+    void showWaitingScreen();
 }
