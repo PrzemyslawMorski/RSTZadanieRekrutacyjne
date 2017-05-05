@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
  * Created by filu on 02.05.17.
  */
 
-public class Card implements Comparable{
+public class Card implements Comparable<Card> {
     String code;
     Drawable image;
     String value;
@@ -34,8 +34,7 @@ public class Card implements Comparable{
     }
 
     @Override
-    public int compareTo(@NonNull Object o) {
-        Card other = (Card) o;
-        return code.compareTo(other.code);
+    public int compareTo(@NonNull Card o) {
+        return code.compareTo(o.code);
     }
 }

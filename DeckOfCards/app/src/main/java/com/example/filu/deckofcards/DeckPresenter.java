@@ -29,7 +29,7 @@ public class DeckPresenter implements IDeckPresenter{
     }
 
     public void receiveCards(List<Card> cards) {
-        Collections.sort(cards);
+        Collections.sort(cards); //cards are comparable
         extractImagesAndSendToVieW(cards);
         extractMessageAndSendToView(cards);
     }
@@ -47,23 +47,23 @@ public class DeckPresenter implements IDeckPresenter{
         boolean[] kfb = saKoloryFiguryBlizniakiSchodki(cards);
 
         if(kfb[0]) {
-            message += "Min 3 karty tego samego koloru\n";
+            message += "kolor\n";
         }
 
         if(kfb[3]) {
-            message += "Sa schodki\n";
+            message += "schodki\n";
         }
 
         if(kfb[1]) {
-            message += "Min 3 figury\n";
+            message += "figury\n";
         }
 
         if(kfb[2]) {
-            message += "Min 3 karty tej samej wartosci\n";
+            message += "blizniaki\n";
         }
 
         if(message.equals("")) {
-            message = "Nie znaleziono charakterystycznych kombinacji";
+            message = "brak charakterystycznych ulozen";
         }
         view.showMessage(message);
     }
