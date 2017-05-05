@@ -24,12 +24,17 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView {
 
     @Override
     public void showCards(List<Drawable> cards) {
-        Toast.makeText(this, "got cards", Toast.LENGTH_LONG).show();
+
     }
 
     @Override
     public void showWaitingScreen() {
         setContentView(R.layout.layout_waiting);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }
 
