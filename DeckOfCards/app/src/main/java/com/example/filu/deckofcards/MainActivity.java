@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -14,20 +13,17 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.losujBtn)
-    Button losujBtn;
+    @BindView(R.id.numDecksBar)
+    SeekBar numDecksBar;
 
-    @BindView(R.id.ileTaliiBar)
-    SeekBar ileTaliiBar;
+    @BindView(R.id.numDecksText)
+    TextView numDecksText;
 
-    @BindView(R.id.ileTaliiText)
-    TextView ileTaliiText;
-
-    @OnClick(R.id.losujBtn)
+    @OnClick(R.id.drawCardsBtn)
     void onLosujClicked(View view) {
-        Intent losujIntent = new Intent(this, DeckViewActivity.class);
-        losujIntent.putExtra("ileTalii", ileTaliiBar.getProgress() + 1);
-        startActivity(losujIntent);
+        Intent drawCardsIntent = new Intent(this, DeckViewActivity.class);
+        drawCardsIntent.putExtra("numDecks", numDecksBar.getProgress() + 1);
+        startActivity(drawCardsIntent);
     }
 
     @Override
@@ -36,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        ileTaliiBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        numDecksBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ileTaliiText.setText(Integer.toString(progress+1));
+                numDecksText.setText(Integer.toString(progress+1));
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) { }

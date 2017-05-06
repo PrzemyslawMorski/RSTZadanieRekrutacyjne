@@ -13,6 +13,7 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
     IDeckPresenter presenter;
     int numDecks;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,15 +21,15 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
 
         IDeckRepository repo = new DeckRepository();
         presenter = new DeckPresenter(this, repo);
-        numDecks = (int) getIntent().getExtras().get("ileTalii");
+        numDecks = (int) getIntent().getExtras().get("numDecks");
         presenter.loadCards(numDecks);
     }
 
     @Override
     public void showCards(List<Drawable> cards) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        DisplayCardsFragment fragment = DisplayCardsFragment.newInstance(3, cards);
-        transaction.replace(R.id.sample_content_fragment, fragment);
+        DisplayDrawnCardsFragment fragment = DisplayDrawnCardsFragment.newInstance(3, cards);
+        transaction.replace(R.id.placeholder_fragment, fragment);
         transaction.commit();
         setContentView(R.layout.activity_deck_view);
     }
@@ -40,8 +41,8 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
 
     @Override
     public void showMessage(String message) {
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(message);
+        TextView cardsInfo = (TextView) findViewById(R.id.cardsInfoText);
+        cardsInfo.setText(message);
     }
 
     @Override

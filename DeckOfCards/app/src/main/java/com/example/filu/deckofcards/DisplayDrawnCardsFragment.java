@@ -12,20 +12,17 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-public class DisplayCardsFragment extends Fragment {
-    CardImageAdapter mAdapter;
-    RecyclerView.LayoutManager mLayoutManager;
-
+public class DisplayDrawnCardsFragment extends Fragment {
     List<Drawable> images;
     int columnSpan;
-    RecyclerView recyclerView;
 
-    public DisplayCardsFragment() {
+
+    public DisplayDrawnCardsFragment() {
         // Required empty public constructor
     }
 
-    public static DisplayCardsFragment newInstance(int columnSpan, List<Drawable> images) {
-        DisplayCardsFragment fragment = new DisplayCardsFragment();
+    public static DisplayDrawnCardsFragment newInstance(int columnSpan, List<Drawable> images) {
+        DisplayDrawnCardsFragment fragment = new DisplayDrawnCardsFragment();
         //not a good way of passing arguments, gonna change it
         fragment.columnSpan = columnSpan;
         fragment.images = images;
@@ -41,18 +38,14 @@ public class DisplayCardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        RecyclerView rootView = (RecyclerView) inflater.inflate(R.layout.fragment_display_drawn_cards, container, false);
 
-        View rootView = inflater.inflate(R.layout.fragment_display_cards, container, false);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), columnSpan);
+        rootView.setLayoutManager(mLayoutManager);
 
-        recyclerView = (RecyclerView) rootView;
-        mLayoutManager = new GridLayoutManager(getActivity(), columnSpan);
-
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.scrollToPosition(0);
-
-        mAdapter = new CardImageAdapter(images);
-        recyclerView.setAdapter(mAdapter);
-
+        CardImageAdapter mAdapter = new CardImageAdapter(images);
+        rootView.setAdapter(mAdapter);
+        rootView.scrollToPosition(0);
         return rootView;
     }
 

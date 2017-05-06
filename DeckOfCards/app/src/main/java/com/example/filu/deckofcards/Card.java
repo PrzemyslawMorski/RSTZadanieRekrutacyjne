@@ -13,7 +13,12 @@ public class Card implements Comparable<Card> {
     String value;
     String suit;
 
-    public Card() { }
+    public Card() {
+        code = "";
+        image = null;
+        value = "";
+        suit = "";
+    }
 
     Card setValue(String value) {
         this.value = value;
@@ -35,6 +40,13 @@ public class Card implements Comparable<Card> {
 
     @Override
     public int compareTo(@NonNull Card o) {
-        return code.compareTo(o.code);
+        //these ifs are used beacause in some cases you can't just compare the values eg. QUEEN comes after KING and the result would be wrong
+        if(value.equals("KING") || (value.equals("10") && o.value.length()==1) || (o.value.equals("ACE"))) {
+            return 1;
+        }
+        if(o.value.equals("KING") || (o.value.equals("10") && value.length()==1) || (value.equals("ACE"))) {
+            return -1;
+        }
+        return value.compareTo(o.value);
     }
 }
