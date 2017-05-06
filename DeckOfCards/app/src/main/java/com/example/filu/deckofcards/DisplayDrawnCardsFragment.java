@@ -38,7 +38,7 @@ public class DisplayDrawnCardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        RecyclerView rootView = (RecyclerView) inflater.inflate(R.layout.fragment_display_drawn_cards, container, false);
+        RecyclerView rootView = rootView = (RecyclerView) inflater.inflate(R.layout.fragment_display_drawn_cards, container, false);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), columnSpan);
         rootView.setLayoutManager(mLayoutManager);

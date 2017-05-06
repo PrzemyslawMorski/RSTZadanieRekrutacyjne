@@ -10,7 +10,7 @@ import java.util.List;
  * Created by filu on 02.05.17.
  */
 
-public class DeckPresenter implements IDeckPresenter{
+public class DeckPresenter implements IDeckPresenter {
     IDeckView view;
     IDeckRepository repo;
 

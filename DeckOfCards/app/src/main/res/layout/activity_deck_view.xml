@@ -12,7 +12,7 @@
     <FrameLayout
         android:id="@+id/placeholder_fragment"
         android:layout_width="match_parent"
-        android:layout_height="372dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_light">
 
     </FrameLayout>
@@ -39,8 +39,10 @@
             android:id="@+id/cardsInfoText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18sp"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textSize="20sp" />
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:layout_below="@id/drawMoreCardsBtn"/>
     </RelativeLayout>
 </android.widget.LinearLayout>

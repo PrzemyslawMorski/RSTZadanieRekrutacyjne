@@ -1,5 +1,6 @@
 package com.example.filu.deckofcards;
 
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -13,11 +14,14 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
     IDeckPresenter presenter;
     int numDecks;
 
+    List<Drawable> currentCards;
+    String currentMessage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deck_view);
+        setContentView(R.layout.layout_waiting);
 
         IDeckRepository repo = new DeckRepository();
         presenter = new DeckPresenter(this, repo);
@@ -27,8 +31,15 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
 
     @Override
     public void showCards(List<Drawable> cards) {
+        currentCards = cards;
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        DisplayDrawnCardsFragment fragment = DisplayDrawnCardsFragment.newInstance(3, cards);
+        DisplayDrawnCardsFragment fragment = null;
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            fragment = DisplayDrawnCardsFragment.newInstance(5, currentCards);
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            fragment = DisplayDrawnCardsFragment.newInstance(3, currentCards);
+        }
         transaction.replace(R.id.placeholder_fragment, fragment);
         transaction.commit();
         setContentView(R.layout.activity_deck_view);
@@ -41,6 +52,7 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
 
     @Override
     public void showMessage(String message) {
+        currentMessage = message;
         TextView cardsInfo = (TextView) findViewById(R.id.cardsInfoText);
         cardsInfo.setText(message);
     }
@@ -48,6 +60,23 @@ public class DeckViewActivity extends AppCompatActivity implements IDeckView, Vi
     @Override
     public void onClick(View v) {
         presenter.loadCards(numDecks);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        DisplayDrawnCardsFragment fragment = null;
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            fragment = DisplayDrawnCardsFragment.newInstance(5, currentCards);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            fragment = DisplayDrawnCardsFragment.newInstance(3, currentCards);
+        }
+        transaction.replace(R.id.placeholder_fragment, fragment);
+        transaction.commit();
+        setContentView(R.layout.activity_deck_view);
+        TextView cardsInfo = (TextView) findViewById(R.id.cardsInfoText);
+        cardsInfo.setText(currentMessage);
     }
 }
 
