@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9c81243d73eaf7a495a33fb5b45f298f42728e09">
+        <dex dex="/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_03ba50b2674d0facd921f55e0b647524dfe9da60/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_092d4a8d2e6fde343bd713a394075e0237329bf8/classes.dex" />
+    </item>
+
+</items>

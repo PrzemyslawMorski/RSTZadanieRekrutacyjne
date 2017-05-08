@@ -1,0 +1,7 @@
+#Sun May 07 13:51:59 CEST 2017
+base.0=/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_03ba50b2674d0facd921f55e0b647524dfe9da60
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_092d4a8d2e6fde343bd713a394075e0237329bf8/classes.dex
+base.1=/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_092d4a8d2e6fde343bd713a394075e0237329bf8
+file.0=/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_03ba50b2674d0facd921f55e0b647524dfe9da60/classes.dex

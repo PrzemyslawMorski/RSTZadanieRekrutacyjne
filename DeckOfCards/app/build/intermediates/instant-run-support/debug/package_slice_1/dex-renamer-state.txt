@@ -1,0 +1,4 @@
+#Fri May 05 18:23:15 CEST 2017
+base.0=/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1
+renamed.0=classes.dex
+file.0=/home/filu/Desktop/Repo/DeckOfCards/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex
